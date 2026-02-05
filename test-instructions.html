@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Test LinkedIn Resume Analyzer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .instructions {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .step {
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-left: 4px solid #0a66c2;
+        }
+
+        .feature {
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 6px;
+        }
+
+        .new-feature {
+            background: #e8f5e8;
+            border-left: 4px solid #4caf50;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🚀 LinkedIn Resume Analyzer - Test Instructions</h1>
+
+    <div class="instructions">
+        <h2>📋 How to Test Your Enhanced Extension</h2>
+
+        <div class="step">
+            <strong>Step 1:</strong> Load the Extension
+            <ul>
+                <li>Open Chrome and go to <code>chrome://extensions/</code></li>
+                <li>Enable "Developer mode" (top right toggle)</li>
+                <li>Click "Load unpacked" and select:
+                    <code>/Users/punnamanikumar/Documents/Projects/LinkedIn Analyser/extension</code></li>
+                <li>The extension should appear as a Side Panel</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <strong>Step 2:</strong> Test on LinkedIn
+            <ul>
+                <li>Navigate to any LinkedIn job posting (e.g., search "software engineer jobs")</li>
+                <li>Click on a job to view its details</li>
+                <li>The LinkedIn Analyser side panel should automatically open</li>
+                <li>If not, click the extension icon or press <code>Ctrl+Shift+Y</code> (or <code>Cmd+Shift+Y</code> on
+                    Mac)</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <strong>Step 3:</strong> Extract Job Data
+            <ul>
+                <li>Click "Extract Job Data"</li>
+                <li>You should see job title and success message</li>
+                <li><span class="new-feature">NEW: A "Clear Data" button should appear</span></li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <strong>Step 4:</strong> Upload Resume
+            <ul>
+                <li>Choose a PDF, DOCX, or TXT resume file</li>
+                <li>The "Analyze Resume Match" button should become enabled</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <strong>Step 5:</strong> Run Analysis
+            <ul>
+                <li>Click "Analyze Resume Match"</li>
+                <li>Wait for AI analysis (may take 10-30 seconds)</li>
+                <li>View detailed results with weighted scoring</li>
+                <li><span class="new-feature">NEW: Analysis automatically saved to history</span></li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <strong>Step 6:</strong> Test New Features
+            <ul>
+                <li><span class="new-feature">Click "Clear Data" to reset the current analysis</span></li>
+                <li><span class="new-feature">Click "History" tab to view past analyses</span></li>
+                <li><span class="new-feature">Click on any history item to navigate back to that job</span></li>
+                <li><span class="new-feature">Use "Clear All History" to reset history</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>✨ New Features Added</h2>
+
+    <div class="feature new-feature">
+        <h3>🗂️ History Tab</h3>
+        <p>View all your previous job analyses with:</p>
+        <ul>
+            <li>Job title and company name</li>
+            <li>Analysis date and time</li>
+            <li>Match score with color coding</li>
+            <li>Click to navigate back to job posting</li>
+        </ul>
+    </div>
+
+    <div class="feature new-feature">
+        <h3>🧹 Clear Data Option</h3>
+        <p>Easily reset current analysis with one click:</p>
+        <ul>
+            <li>Clears extracted job data</li>
+            <li>Resets uploaded resume</li>
+            <li>Hides analysis results</li>
+            <li>Shows success confirmation</li>
+        </ul>
+    </div>
+
+    <div class="feature new-feature">
+        <h3>🔄 Tab Navigation</h3>
+        <p>Smooth switching between:</p>
+        <ul>
+            <li><strong>Analyzer Tab:</strong> Main analysis functionality</li>
+            <li><strong>History Tab:</strong> View past analyses</li>
+            <li>Animated transitions and active state indicators</li>
+        </ul>
+    </div>
+
+    <div class="feature new-feature">
+        <h3>💾 Persistent Storage</h3>
+        <p>Your data persists across sessions:</p>
+        <ul>
+            <li>History automatically saved to Chrome storage</li>
+            <li>Up to 50 recent analyses stored</li>
+            <li>URLs preserved for easy navigation</li>
+        </ul>
+    </div>
+
+    <h2>🐛 Troubleshooting</h2>
+
+    <div class="feature">
+        <h3>Extension Not Loading</h3>
+        <ul>
+            <li>Refresh the extension in <code>chrome://extensions/</code></li>
+            <li>Check browser console for errors (F12)</li>
+            <li>Make sure you're on a LinkedIn job page</li>
+        </ul>
+    </div>
+
+    <div class="feature">
+        <h3>Analysis Failing</h3>
+        <ul>
+            <li>Ensure backend server is running on port 3000</li>
+            <li>Check if API_BASE_URL in popup.js is correct</li>
+            <li>Try with different resume file formats</li>
+        </ul>
+    </div>
+
+    <div class="feature">
+        <h3>History Not Working</h3>
+        <ul>
+            <li>Complete at least one analysis first</li>
+            <li>Check Chrome storage permissions</li>
+            <li>Try clearing browser data if issues persist</li>
+        </ul>
+    </div>
+
+    <h2>🌟 Backend Status</h2>
+    <p><strong>Server Running:</strong> ✅ http://localhost:3000</p>
+    <p><strong>CORS Configured:</strong> ✅ Chrome extensions allowed</p>
+    <p><strong>Endpoints Available:</strong></p>
+    <ul>
+        <li>GET /api/health - Health check</li>
+        <li>POST /api/analyze-resume - Basic analysis</li>
+        <li>POST /api/enhanced-analyze - Enhanced analysis with weighting</li>
+    </ul>
+</body>
+
+</html>
