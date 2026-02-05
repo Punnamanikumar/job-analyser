@@ -581,7 +581,6 @@ app.post('/api/analyze-resume-stream', upload.single('resumeFile'), async (req, 
 
     let analysisResult;
 
-    console.log('jobData', jobData);
     if (config.isLocal) {
       // Use local Ollama with progress updates
       analysisResult = await analyzeResumeMatchLocal(jobData, resumeContent, onProgress);
@@ -706,7 +705,6 @@ app.post('/api/analyze-resume-enhanced', upload.single('resumeFile'), async (req
       console.warn('Failed to load portfolio.txt, using provided resume content:', e.message);
     }
 
-    // console.log('jobData:', jobData);
     // Validate required data
     if (!jobData || !jobData.title || !jobData.description) {
       return res.status(400).json(createErrorResponse(

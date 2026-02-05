@@ -133,6 +133,12 @@ document.addEventListener('DOMContentLoaded', async () => {
       testConnection();
     }
 
+    // Screenshot button handler (works on any page)
+    const screenshotBtn = document.getElementById('screenshotBtn');
+    if (screenshotBtn) {
+      screenshotBtn.addEventListener('click', takeScreenshot);
+    }
+
     // Set current URL as last active URL
     const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
     await chrome.storage.local.set({ lastActiveUrl: tab.url });
@@ -141,6 +147,67 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.error('Extension initialization error:', initError);
   }
 });
+
+// Take screenshot of the extension popup
+async function takeScreenshot() {
+  const screenshotBtn = document.getElementById('screenshotBtn');
+
+  try {
+    // Add visual feedback
+    if (screenshotBtn) {
+      screenshotBtn.classList.add('capturing');
+      screenshotBtn.textContent = '⏳';
+    }
+
+    // Wait a brief moment for any animations to settle
+    await new Promise(resolve => setTimeout(resolve, 100));
+
+    // Capture the entire document body
+    const canvas = await html2canvas(document.body, {
+      backgroundColor: '#0f0f1a',
+      scale: 2, // Higher resolution
+      useCORS: true,
+      logging: false,
+      windowWidth: document.body.scrollWidth,
+      windowHeight: document.body.scrollHeight,
+      scrollX: 0,
+      scrollY: 0
+    });
+
+    // Convert to blob and download
+    canvas.toBlob((blob) => {
+      const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+      const filename = `job-analyser-screenshot-${timestamp}.png`;
+
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = filename;
+      link.click();
+
+      URL.revokeObjectURL(url);
+
+      // Restore button
+      if (screenshotBtn) {
+        screenshotBtn.classList.remove('capturing');
+        screenshotBtn.textContent = '📸';
+      }
+
+      showToast('Screenshot saved!', 'success');
+    }, 'image/png');
+
+  } catch (error) {
+    console.error('Screenshot error:', error);
+
+    // Restore button on error
+    if (screenshotBtn) {
+      screenshotBtn.classList.remove('capturing');
+      screenshotBtn.textContent = '📸';
+    }
+
+    showToast('Failed to take screenshot: ' + error.message, 'error');
+  }
+}
 
 // Initialize event listeners for the analysis interface
 // Called on initial load and after refresh button detects a supported job site

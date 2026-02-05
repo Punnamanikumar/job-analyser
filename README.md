@@ -27,6 +27,43 @@ Job Analyser is a **Chrome extension + Node.js backend** that uses AI to analyze
 
 ---
 
+## 📸 Screenshots
+
+<details>
+<summary><b>🖼️ Click to expand screenshots</b></summary>
+
+### Main Analysis View
+The complete analysis showing match score, matched skills, and skill gaps:
+
+![Job Analyser Main View](docs/images/job-analyser-screenshot.png)
+
+### Job Data Extraction
+Extract job details with one click from LinkedIn or Naukri:
+
+![Job Data Extraction](docs/images/job-data-extraction-Screenshot.png)
+
+### AI Insights
+Experience alignment, strengths, and personalized recommendations:
+
+![AI Insights](docs/images/ai-insights.screenshot.png)
+
+### Re-run Analysis
+View stored analysis or run fresh analysis with updated portfolio:
+
+![Re-run Analysis](docs/images/rerun-job-analyser-screenshot.png)
+
+### Initial State
+Clean interface ready for job analysis:
+
+![Initial State](docs/images/job-listing-portal.png)
+
+### Unsupported Sites
+Helpful message when not on a supported job site:
+
+![Unsupported Sites](docs/images/not-job-portal-screenshot.png)
+
+</details>
+
 ## ✨ Features
 
 ### 🎯 Core Features

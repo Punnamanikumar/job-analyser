@@ -11,7 +11,10 @@
 <body>
   <div class="header">
     <h1>LinkedIn Analyser</h1>
-    <button id="refreshBtn" class="refresh-btn" title="Refresh page data">🔄</button>
+    <div class="header-actions">
+      <button id="screenshotBtn" class="header-btn" title="Take Screenshot">📸</button>
+      <button id="refreshBtn" class="refresh-btn" title="Refresh page data">🔄</button>
+    </div>
   </div>
 
   <div class="main-content">
@@ -100,6 +103,7 @@
     <p class="instruction">Navigate to a LinkedIn job page and follow the steps above to analyze your resume match.</p>
   </div>
 
+  <script src="html2canvas.min.js"></script>
   <script src="popup.js"></script>
 </body>
 

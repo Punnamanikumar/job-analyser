@@ -345,6 +345,10 @@ RETURN JSON IN EXACTLY THIS STRUCTURE
   "experienceAlignment": {
     "levelMatch": boolean,
     "yearsMatch": boolean,
+    "resumeYears": number,
+    "jobRequiredYears": number,
+    "resumeLevel": "junior|mid|senior|lead|principal",
+    "jobLevel": "junior|mid|senior|lead|principal",
     "assessment": "excellent|good|needs_improvement"
   },
   "skillsGaps": {
